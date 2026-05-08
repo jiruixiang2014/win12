@@ -1937,7 +1937,7 @@ function openDockWidget(name){
 			}, 0);
 		}
     }else{
-        console.err("openDockWidget()传递的name不正确!");
+        console.error("openDockWidget()传递的name不正确!");
     }
 }
 
