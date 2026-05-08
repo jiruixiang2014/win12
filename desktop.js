@@ -152,8 +152,8 @@ page.addEventListener('click', (event) => {
 // 上古代码，列表前的小竖线
 document.querySelectorAll('list.focs').forEach(li => {
     li.addEventListener('click', () => {
-        let _ = li.$$('span.focs')[0], la = li.$$('a.check')[0],
-            las = li.$$('a');
+        let _ = li.querySelector('span.focs'), la = li.querySelector('a.check'),
+            las = li.querySelectorAll('a');
         if (_.dataset.type == 'abs') {
             $(_).addClass('cl');
             $(_).css('top', (la.getBoundingClientRect().top - li.parentElement.getBoundingClientRect().top) + 'px');
@@ -191,7 +191,7 @@ $('input,textarea,*[contenteditable=true]').on('contextmenu', (e) => {
 // 给桌面上的图标加右键菜单
 function addMenu() {
     var parentDiv = $('#desktop')[0];
-    var childDivs = parentDiv.$$('#div');
+    var childDivs = parentDiv.querySelectorAll('#div');
 
     for (var i = 0; i < childDivs.length; i++) {
         if (i <= 4) {//win12内置的5个图标不添加

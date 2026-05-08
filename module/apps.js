@@ -229,48 +229,48 @@ let apps = {
         },
         load: (init_all = true) => {
             if (init_all == true) {
-                const performance = $('#win-taskmgr>.main>.cnt.performance>.content>.performance-graph')[0];
-                performance.$$('.graph-cpu>.information>.left>div:nth-child(3)>.value')[0].innerText = apps.taskmgr.tasks.length;
+                const performanceEl = $('#win-taskmgr>.main>.cnt.performance>.content>.performance-graph')[0];
+                performanceEl.querySelector('.graph-cpu>.information>.left>div:nth-child(3)>.value').innerText = apps.taskmgr.tasks.length;
 
-                apps.taskmgr.cpuChart = performance.$$('.graph-cpu>.graph>.chart')[0];
-                apps.taskmgr.cpuBg = performance.$$('.graph-cpu>.graph>.bg')[0];
+                apps.taskmgr.cpuChart = performanceEl.querySelector('.graph-cpu>.graph>.chart');
+                apps.taskmgr.cpuBg = performanceEl.querySelector('.graph-cpu>.graph>.bg');
                 apps.taskmgr.cpuBg.innerHTML = '<g class="col"></g><g class="row"></g>';
                 apps.taskmgr.cpuChart.innerHTML = '<path d="M 6000 1000" stroke="#2983cc" stroke-width="3px" fill="#2983cc22" />';
 
-                apps.taskmgr.memoryChart = performance.$$('.graph-memory>.graph>.chart')[0];
-                apps.taskmgr.memoryBg = performance.$$('.graph-memory>.graph>.bg')[0];
+                apps.taskmgr.memoryChart = performanceEl.querySelector('.graph-memory>.graph>.chart');
+                apps.taskmgr.memoryBg = performanceEl.querySelector('.graph-memory>.graph>.bg');
                 apps.taskmgr.memoryBg.innerHTML = '<g class="col"></g><g class="row"></g>';
                 apps.taskmgr.memoryChart.innerHTML = '<path d="M 6000 1000" stroke="#660099" stroke-width="3px" fill="#66009922" />';
 
-                apps.taskmgr.memory2Elt = performance.$$('.graph-memory>.graph2>.chart')[0];
+                apps.taskmgr.memory2Elt = performanceEl.querySelector('.graph-memory>.graph2>.chart');
 
-                apps.taskmgr.diskChart = performance.$$('.graph-disk>.graph>.chart')[0];
-                apps.taskmgr.diskBg = performance.$$('.graph-disk>.graph>.bg')[0];
+                apps.taskmgr.diskChart = performanceEl.querySelector('.graph-disk>.graph>.chart');
+                apps.taskmgr.diskBg = performanceEl.querySelector('.graph-disk>.graph>.bg');
                 apps.taskmgr.diskBg.innerHTML = '<g class="col"></g><g class="row"></g>';
                 apps.taskmgr.diskChart.innerHTML = '<path d="M 6000 1000" stroke="#008000" stroke-width="3px" fill="#00800022" />';
 
-                apps.taskmgr.disk2Chart = performance.$$('.graph-disk>.graph2>.chart')[0];
-                apps.taskmgr.disk2Bg = performance.$$('.graph-disk>.graph2>.bg')[0];
+                apps.taskmgr.disk2Chart = performanceEl.querySelector('.graph-disk>.graph2>.chart');
+                apps.taskmgr.disk2Bg = performanceEl.querySelector('.graph-disk>.graph2>.bg');
                 apps.taskmgr.disk2Bg.innerHTML = '<g class="col"></g><g class="row"></g>';
                 apps.taskmgr.disk2Chart.innerHTML = '<path d="M 6000 1000" stroke="#008000" stroke-width="3px" fill="#00800022" /><path d="M 6000 1000" stroke="#008000" stroke-width="3px" fill="none" stroke-dasharray="15, 15" />';
 
-                apps.taskmgr.wifiChart = performance.$$('.graph-wifi>.graph>.chart')[0];
-                apps.taskmgr.wifiBg = performance.$$('.graph-wifi>.graph>.bg')[0];
+                apps.taskmgr.wifiChart = performanceEl.querySelector('.graph-wifi>.graph>.chart');
+                apps.taskmgr.wifiBg = performanceEl.querySelector('.graph-wifi>.graph>.bg');
                 apps.taskmgr.wifiChart.innerHTML = '<path d="M 6000 1000" stroke="#8e5829" stroke-width="3px" fill="#8e582922" /><path d="M 6000 1000" stroke="#8e5829" stroke-width="3px" fill="none" stroke-dasharray="10, 10" />';
                 apps.taskmgr.wifiBg.innerHTML = '<g class="col"></g><g class="row"></g>';
 
-                apps.taskmgr.gpu3Chart = performance.$$('.graph-gpu>.graphs>svg')[0];
+                apps.taskmgr.gpu3Chart = performanceEl.querySelector('.graph-gpu>.graphs>svg');
                 apps.taskmgr.gpu3Chart.innerHTML = '<path d="M 6000 1000" stroke="#2983cc" stroke-width="3px" fill="#2983cc22" />';
 
                 for (var i = 1; i <= 4; i++) {
-                    apps.taskmgr.gpuChart[i-1] = performance.$$('.graph-gpu>.graphs>.graph' + i + '>.chart>.chart')[0];
+                    apps.taskmgr.gpuChart[i-1] = performanceEl.querySelector('.graph-gpu>.graphs>.graph' + i + '>.chart>.chart');
                     apps.taskmgr.gpuChart[i-1].innerHTML = '<path d="M 6000 1000" stroke-width="3px" stroke="#2983cc" fill="#2983cc22" />';
-                    apps.taskmgr.gpuBg[i-1] = performance.$$('.graph-gpu>.graphs>.graph' + i + '>.chart>.bg')[0];
+                    apps.taskmgr.gpuBg[i-1] = performanceEl.querySelector('.graph-gpu>.graphs>.graph' + i + '>.chart>.bg');
                     apps.taskmgr.gpuBg[i-1].innerHTML = '<g class="col"></g><g class="row"></g>';
                 }
                 for (var i = 1; i <= 2; i++) {
-                    apps.taskmgr.gpu2Chart[i-1] = performance.$$('.graph-gpu>.gpu2-' + i + '>.chart')[0];
-                    apps.taskmgr.gpu2Bg[i-1] = performance.$$('.graph-gpu>.gpu2-' + i + '>.bg')[0];
+                    apps.taskmgr.gpu2Chart[i-1] = performanceEl.querySelector('.graph-gpu>.gpu2-' + i + '>.chart');
+                    apps.taskmgr.gpu2Bg[i-1] = performanceEl.querySelector('.graph-gpu>.gpu2-' + i + '>.bg');
                     apps.taskmgr.gpu2Bg[i-1].innerHTML = '<g class="col"></g><g class="row"></g>';
                     apps.taskmgr.gpu2Chart[i-1].innerHTML = '<path d="M 6000 1000" stroke-width="3px" stroke="#2983cc" fill="#2983cc22" />';
                 }
@@ -515,11 +515,11 @@ let apps = {
             }
             apps.taskmgr.drawGraph(apps.taskmgr.gpu3Chart, apps.taskmgr.gpu.usage * 10);
             const menu = $('#win-taskmgr>.main>.cnt.performance>.content>.select-menu')[0];
-            menu.$$('.graph-cpu svg')[0].innerHTML = apps.taskmgr.cpuChart.innerHTML;
-            menu.$$('.graph-memory svg')[0].innerHTML = apps.taskmgr.memoryChart.innerHTML;
-            menu.$$('.graph-disk svg')[0].innerHTML = apps.taskmgr.diskChart.innerHTML;
-            menu.$$('.graph-wifi svg')[0].innerHTML = apps.taskmgr.wifiChart.innerHTML;
-            menu.$$('.graph-gpu svg')[0].innerHTML = apps.taskmgr.gpu3Chart.innerHTML;
+            menu.querySelector('.graph-cpu svg').innerHTML = apps.taskmgr.cpuChart.innerHTML;
+            menu.querySelector('.graph-memory svg').innerHTML = apps.taskmgr.memoryChart.innerHTML;
+            menu.querySelector('.graph-disk svg').innerHTML = apps.taskmgr.diskChart.innerHTML;
+            menu.querySelector('.graph-wifi svg').innerHTML = apps.taskmgr.wifiChart.innerHTML;
+            menu.querySelector('.graph-gpu svg').innerHTML = apps.taskmgr.gpu3Chart.innerHTML;
         },
         changeSort: (elt, type) => {
             for (const _elt of $('#win-taskmgr>.main>.cnt.processes thead>tr>th>i')) {
