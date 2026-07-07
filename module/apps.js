@@ -1215,12 +1215,18 @@ let apps = {
                     continue;
                 }
                 name_1 = inputTag.value.split('.');
-                if (name_1[0].indexOf('/') > -1) alert('恭喜你发现了这个bug,但是太懒了不想修qwq');
+                if (name_1[0].indexOf('/') > -1) {
+                    shownotice('invalid-file-name');
+                    var element = document.getElementById('new_name');
+                    element.parentNode.removeChild(element);
+                    aTag.innerHTML += on;
+                    continue;
+                }
                 console.log(name_1);
                 if (name_1[1] == 'txt') {
                     icon_ = 'icon/files/txt.png';
                 }
-                else if (name_1[1] == 'png' || name_1[1] == 'jpg' | name_1[1] == 'bmp') {
+                else if (name_1[1] == 'png' || name_1[1] == 'jpg' || name_1[1] == 'bmp') {
                     icon_ = 'icon/files/picture.png';
                 }
                 else {
@@ -1253,9 +1259,9 @@ let apps = {
                     }
                 }
                 const keys = Object.keys(tmp['folder']);
-                for (var i = 0; i < keys.length; i++) {
-                    if (keys[i] == on) {
-                        keys[i] = inputTag.value;
+                for (let j = 0; j < keys.length; j++) {
+                    if (keys[j] == on) {
+                        keys[j] = inputTag.value;
                         tmp['folder'][inputTag.value] = tmp['folder'][on];
                         delete tmp['folder'][on];
                     }

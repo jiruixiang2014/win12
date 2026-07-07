@@ -774,6 +774,14 @@ const nts = {
             { type: 'cancel', text: lang('取消', 'cancel'), js: 'closenotice();' }
         ]
     },
+    'invalid-file-name': {
+        cnt: `
+            <p class="tit">错误</p>
+            <p>文件名不能包含字符 "/"</p>`,
+        btn: [
+            { type: 'cancel', text: lang('取消', 'cancel'), js: 'closenotice();' }
+        ]
+    },
     'about-copilot': {
         cnt: `
             <p class="tit">关于 Windows 12 Copilot</p>
